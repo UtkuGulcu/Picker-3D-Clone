@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6874093949026211250}
   - component: {fileID: 4072273092290428017}
   - component: {fileID: 3312068550136979505}
+  - component: {fileID: 2436981401393093701}
+  - component: {fileID: 3141712479260347376}
   m_Layer: 0
   m_Name: Fill Area Block
   m_TagString: Untagged
@@ -27,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 283221016769349547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.55069983}
+  m_LocalScale: {x: 0.77055424, y: 1, z: 0.55069983}
   m_Children:
   - {fileID: 7831018050964541075}
   - {fileID: 2522521789423089975}
@@ -63,7 +65,61 @@ MonoBehaviour:
   fillAreaUI: {fileID: 1382565130949996}
   fillAreaAnimation: {fileID: 811740957254897104}
   OnLevelFailed: {fileID: 11400000, guid: 021fd4dde167b80468b28b85ed5a9b5c, type: 2}
-  requiredCollectables: 10
+  type: 0
+--- !u!114 &2436981401393093701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283221016769349547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a221297df2ffc2f4aa69f8d4d00033c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 8095981715841074600}
+  isLastBlock: 0
+--- !u!114 &3141712479260347376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283221016769349547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca8a63b9a309144f960a51e1fb243a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: d5c705c01606c4f49bdaf17963eb98de, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2436981401393093701}
+        m_TargetAssemblyTypeName: ColorChanger, Assembly-CSharp
+        m_MethodName: SetColor
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3312068550136979505}
+        m_TargetAssemblyTypeName: FillArea, Assembly-CSharp
+        m_MethodName: SetFillAreaRequirement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &686256399105947459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,7 +1484,7 @@ GameObject:
   - component: {fileID: 8095981715841074600}
   - component: {fileID: 4289515567839441247}
   m_Layer: 0
-  m_Name: Green Ground
+  m_Name: Level Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1854,7 +1910,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e10bd0d45e377f340a99d3be8f70be56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillArea: {fileID: 3312068550136979505}
   collectedCountText: {fileID: 106087755061343258}
   requiredCollectableText: {fileID: 1007153298318427887}
 --- !u!1 &8249055473372877581

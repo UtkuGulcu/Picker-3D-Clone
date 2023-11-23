@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class LevelCompleteUI : MonoBehaviour
 {
-    [Header("Events")]
-    [SerializeField] private GameEventSO OnGameStarted;
+    //[Header("Events")]
+    //[SerializeField] private GameEventSO OnGameStarted;
+
+    public static event EventHandler OnGameStarted;
     
     [SerializeField] private GameObject visuals;
     [SerializeField] private Button continueButton;
@@ -19,7 +21,8 @@ public class LevelCompleteUI : MonoBehaviour
 
     private void OnContinueButtonDown()
     {
-        OnGameStarted.Raise();
+        //OnGameStarted.Raise();
+        OnGameStarted.Invoke(this, EventArgs.Empty);
         HideVisuals();
     }
 

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7838a125423ea40b622276b3916972, type: 3}
   m_Name: Picker Data
   m_EditorClassIdentifier: 
-  horizontalSpeed: 1
+  horizontalSpeed: 0.25
   verticalSpeed: 4
   rewardAreaSpeed: 10

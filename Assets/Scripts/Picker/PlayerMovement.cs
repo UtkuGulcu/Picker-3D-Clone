@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Events")]
     [SerializeField] private GameEventSO OnLevelFinished;
+    [SerializeField] private GameEventSO OnLevelTransitionStarted;
     
     [Header("Values")] 
     [SerializeField] private PickerDataSO pickerDataSO;
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         if (!playerInput.IsDragging() || !playerInput.enabled) return;
         
         targetPosition += Vector3.right * (horizontalSpeed * playerInput.GetDragAmount() * Time.fixedDeltaTime);
-        float clampedX = Mathf.Clamp(targetPosition.x, -1.94f, 1.76f);
+        float clampedX = Mathf.Clamp(targetPosition.x, -1.7f, 1.5f);
         targetPosition = new Vector3(clampedX, targetPosition.y, targetPosition.z);
     }
 
@@ -95,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator GoToNextLevelStartPosition()
     {
+        OnLevelTransitionStarted.Raise();
         playerInput.enabled = false;
         
         Vector3 target = LevelManager.Instance.GetLevelStartingLocation();

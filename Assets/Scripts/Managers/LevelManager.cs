@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("Events")]
+    [SerializeField] private GameEventSO OnLevelLoaded;
+    
     public static LevelManager Instance { get; private set; }
     
-    [SerializeField] private LevelSO defaultLevel;
+    [SerializeField] private LevelSO[] levelSOArray;
     
     private LevelSO currentLevelSO;
     private GameObject currentSpawnedLevel;
@@ -26,25 +29,33 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void OnGameLoaded()
     {
         if (currentLevelSO == null)
         {
-            currentLevelSO = defaultLevel;
-            SpawnCurrentLevel();
+            currentLevelSO = levelSOArray[0];
         }
+        
+        SpawnCurrentLevel();
     }
 
-    public void OnLevelPassed()
+    public void SpawnNextLevel()
     {
         currentLevelSO = currentLevelSO.nextLevel;
         nextSpawnedLevel = Instantiate(currentLevelSO.prefab, currentLevelSO.spawnPosition, Quaternion.identity);
+        OnLevelLoaded.Raise(this, currentLevelSO);
     }
 
     public void RespawnLevel()
     {
         Destroy(currentSpawnedLevel);
         SpawnCurrentLevel();
+    }
+    
+    private void SpawnCurrentLevel()
+    {
+        currentSpawnedLevel = Instantiate(currentLevelSO.prefab, currentLevelSO.spawnPosition, Quaternion.identity);
+        OnLevelLoaded.Raise(this, currentLevelSO);
     }
 
     public void DestroyPreviousLevel()
@@ -58,18 +69,23 @@ public class LevelManager : MonoBehaviour
         return currentLevelSO.spawnPosition;
     }
 
-    private void SpawnCurrentLevel()
+    public void SetCurrentLevel(int loadedLevelCount)
     {
-        currentSpawnedLevel = Instantiate(currentLevelSO.prefab, currentLevelSO.spawnPosition, Quaternion.identity);
+        currentLevelSO = levelSOArray[loadedLevelCount - 1];
     }
 
     public int GetCurrentLevelCount()
     {
         return currentLevelSO.levelCount;
     }
+
+    public LevelSO GetCurrentLevel()
+    {
+        return currentLevelSO;
+    }
     
     public int GetNextLevelCount()
     {
-        return currentLevelSO.nextLevel.levelCount;
+        return currentLevelSO.nextLevel == null ? currentLevelSO.levelCount : currentLevelSO.nextLevel.levelCount;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,8 +13,20 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private CheckpointIndicator[] checkpointIndicatorArray;
 
     private int checkpointCount;
-    
-    public void OnGameStarted()
+
+    private void OnEnable()
+    {
+        StartUI.OnGameStarted += OnGameStarted;
+        LevelCompleteUI.OnGameStarted += OnGameStarted;
+    }
+
+    private void OnDisable()
+    {
+        StartUI.OnGameStarted -= OnGameStarted;
+        LevelCompleteUI.OnGameStarted -= OnGameStarted;
+    }
+
+    private void OnGameStarted(object sender, EventArgs e)
     {
         visuals.SetActive(true);
         RefreshCheckpointIndicators();

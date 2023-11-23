@@ -1,20 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StartUI : MonoBehaviour
 {
-    [SerializeField] private GameEventSO OnGameStarted;
+    public static event EventHandler OnGameStarted;
+    
+    //[SerializeField] private GameEventSO OnGameStarted;
     [SerializeField] private GameObject visuals;
+
+    private bool isGamePaused = true;
     
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isGamePaused)
         {
-            OnGameStarted.Raise();
+            //OnGameStarted.Raise();
+            OnGameStarted.Invoke(this, EventArgs.Empty);
             HideVisuals();
-            enabled = false;
+            isGamePaused = false;
         }
+    }
+
+    public void OnGamePaused()
+    {
+        isGamePaused = true;
+        ShowVisuals();
     }
 
     private void HideVisuals()
@@ -22,7 +34,7 @@ public class StartUI : MonoBehaviour
         visuals.SetActive(false);
     }
 
-    public void ShowVisuals()
+    private void ShowVisuals()
     {
         visuals.SetActive(true);
     }

@@ -6,14 +6,17 @@ using UnityEngine;
 
 public class FillAreaUI : MonoBehaviour
 {
-    [SerializeField] private FillArea fillArea;
     [SerializeField] private TMP_Text collectedCountText;
     [SerializeField] private TMP_Text requiredCollectableText;
 
     private void Start()
     {
         collectedCountText.text = "0";
-        requiredCollectableText.text = fillArea.GetRequiredCollectables().ToString();
+    }
+
+    public void SetupRequiredCollectableText(int requiredCollectableCount)
+    {
+        requiredCollectableText.text = requiredCollectableCount.ToString();
     }
 
     public void UpdateText(int collectedCount)

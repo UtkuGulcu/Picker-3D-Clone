@@ -30,4 +30,9 @@ public class CollectableHolder : MonoBehaviour
             collectable.Launch();
         }
     }
+
+    public void ClearCollectableList()
+    {
+        collectableList.Clear();
+    }
 }
