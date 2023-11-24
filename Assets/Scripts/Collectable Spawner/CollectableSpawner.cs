@@ -1,17 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class CollectableSpawner : MonoBehaviour
 {
+    private enum Type
+    {
+        ZigZagMovement,
+        CurvedMovement
+    }
+    
     [Header("References")]
     [SerializeField] private Transform wingTransform;
     [SerializeField] private GameObject collectable;
     [SerializeField] private Transform spawnPointTransform;
 
     [Header("Values")]
+    [SerializeField] private Type type;
     [SerializeField] private float rotateSpeed;
     [SerializeField] private float verticalSpeed;
 
@@ -66,7 +72,15 @@ public class CollectableSpawner : MonoBehaviour
     {
         isActive = true;
         StartCoroutine(WaitToDisableSpawning());
-        collectableSpawnerAnimation.PlayZigZagAnimation();
+
+        if (type == Type.ZigZagMovement)
+        {
+            collectableSpawnerAnimation.PlayZigZagMovementAnimation();
+        }
+        else
+        {
+            collectableSpawnerAnimation.PlayCurvedMovementAnimation();
+        }
     }
 
     private IEnumerator WaitToDisableSpawning()

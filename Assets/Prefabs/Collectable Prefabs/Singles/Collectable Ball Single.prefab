@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 768565208707911194}
   - component: {fileID: 5139115393181331220}
   - component: {fileID: -7347694527752591528}
+  - component: {fileID: 5005838864268537590}
+  - component: {fileID: 1193395063122994575}
   m_Layer: 0
   m_Name: Collectable Ball Single
   m_TagString: Untagged
@@ -126,3 +128,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchForce: 30
+--- !u!114 &5005838864268537590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683499804305403463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa368c2827149442989ddb7d4a44a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCollectableCollisionSound: {fileID: 11400000, guid: c744edb5bf512df44a65b77cda864057, type: 2}
+--- !u!114 &1193395063122994575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683499804305403463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ca8a63b9a309144f960a51e1fb243a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 551df8ee42cdbfb45bf0351564f2ed64, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7347694527752591528}
+        m_TargetAssemblyTypeName: Collectable, Assembly-CSharp
+        m_MethodName: DestroySelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

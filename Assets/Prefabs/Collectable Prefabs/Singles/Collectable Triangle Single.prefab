@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 393609109576321462}
   - component: {fileID: 2056205438489324612}
   - component: {fileID: 7914157102260091571}
+  - component: {fileID: 7568726088888826549}
   m_Layer: 0
   m_Name: Collectable Triangle Single
   m_TagString: Untagged
@@ -156,3 +157,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7568726088888826549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5521239853707568767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa368c2827149442989ddb7d4a44a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCollectableCollisionSound: {fileID: 11400000, guid: c744edb5bf512df44a65b77cda864057, type: 2}

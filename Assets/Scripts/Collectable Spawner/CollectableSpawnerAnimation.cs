@@ -6,16 +6,22 @@ using UnityEngine;
 public class CollectableSpawnerAnimation : MonoBehaviour
 {
     private Animator animator;
-    private static int zigZagTrigger = Animator.StringToHash("zigZag");
+    private static int zigZagMovementTrigger = Animator.StringToHash("zigZagMovement");
+    private static int curvedMovementTrigger = Animator.StringToHash("curvedMovement");
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
-    public void PlayZigZagAnimation()
+    public void PlayZigZagMovementAnimation()
     {
-        animator.SetTrigger(zigZagTrigger);
+        animator.SetTrigger(zigZagMovementTrigger);
+    }
+
+    public void PlayCurvedMovementAnimation()
+    {
+        animator.SetTrigger(curvedMovementTrigger);
     }
 
     // Animation Event: Gets Triggered when Fly Up Animation is finished.

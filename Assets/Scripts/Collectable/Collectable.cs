@@ -15,6 +15,14 @@ public class Collectable : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        if (transform.position.y <= -4f)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void Launch()
     {
         rb.AddForce(Vector3.forward * launchForce * Time.fixedDeltaTime, ForceMode.Impulse);

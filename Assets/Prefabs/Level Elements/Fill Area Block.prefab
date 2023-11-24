@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 6874093949026211250}
   - component: {fileID: 4072273092290428017}
   - component: {fileID: 3312068550136979505}
-  - component: {fileID: 2436981401393093701}
   - component: {fileID: 3141712479260347376}
   m_Layer: 0
   m_Name: Fill Area Block
-  m_TagString: Untagged
+  m_TagString: Fill Area Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,20 +65,6 @@ MonoBehaviour:
   fillAreaAnimation: {fileID: 811740957254897104}
   OnLevelFailed: {fileID: 11400000, guid: 021fd4dde167b80468b28b85ed5a9b5c, type: 2}
   type: 0
---- !u!114 &2436981401393093701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283221016769349547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a221297df2ffc2f4aa69f8d4d00033c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 8095981715841074600}
-  isLastBlock: 0
 --- !u!114 &3141712479260347376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,18 +81,6 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2436981401393093701}
-        m_TargetAssemblyTypeName: ColorChanger, Assembly-CSharp
-        m_MethodName: SetColor
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3312068550136979505}
         m_TargetAssemblyTypeName: FillArea, Assembly-CSharp
         m_MethodName: SetFillAreaRequirement
@@ -1104,6 +1077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnPassedFillArea: {fileID: 11400000, guid: 0ff72792d2e05b641b11c3edede912a0, type: 2}
+  OnFillAreaSuccessUIEnabled: {fileID: 11400000, guid: 251624e6348502641aa792a6d902ea9d, type: 2}
 --- !u!1 &3265688738702558720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +1363,7 @@ GameObject:
   - component: {fileID: 6458478914470836634}
   m_Layer: 0
   m_Name: Fill Area Red Ground
-  m_TagString: Untagged
+  m_TagString: Fill Area Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -43,6 +43,10 @@ public class LevelManager : MonoBehaviour
     {
         currentLevelSO = currentLevelSO.nextLevel;
         nextSpawnedLevel = Instantiate(currentLevelSO.prefab, currentLevelSO.spawnPosition, Quaternion.identity);
+        
+        LevelColorChanger levelColorChanger = nextSpawnedLevel.GetComponent<LevelColorChanger>();
+        levelColorChanger.SetLevelColor(currentLevelSO);
+        
         OnLevelLoaded.Raise(this, currentLevelSO);
     }
 
@@ -55,6 +59,10 @@ public class LevelManager : MonoBehaviour
     private void SpawnCurrentLevel()
     {
         currentSpawnedLevel = Instantiate(currentLevelSO.prefab, currentLevelSO.spawnPosition, Quaternion.identity);
+        
+        LevelColorChanger levelColorChanger = currentSpawnedLevel.GetComponent<LevelColorChanger>();
+        levelColorChanger.SetLevelColor(currentLevelSO);
+        
         OnLevelLoaded.Raise(this, currentLevelSO);
     }
 

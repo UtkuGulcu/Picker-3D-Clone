@@ -7,6 +7,7 @@ public class FillAreaAnimation : MonoBehaviour
 {
     [Header("Events")]
     [SerializeField] private GameEventSO OnPassedFillArea;
+    [SerializeField] private GameEventSO OnFillAreaSuccessUIEnabled;
     
     private Animator animator;
     private static readonly int winTrigger = Animator.StringToHash("win");
@@ -25,5 +26,11 @@ public class FillAreaAnimation : MonoBehaviour
     public void OnAnimationFinished()
     {
         OnPassedFillArea.Raise();
+    }
+
+    // Animation Event 
+    public void OnBarrierOpen()
+    {
+        OnFillAreaSuccessUIEnabled.Raise();
     }
 }
