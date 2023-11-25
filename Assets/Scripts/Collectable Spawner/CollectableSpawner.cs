@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CollectableSpawner : MonoBehaviour
 {
-    private enum Type
+    private enum MovementType
     {
         ZigZagMovement,
         CurvedMovement
@@ -15,19 +16,24 @@ public class CollectableSpawner : MonoBehaviour
     [SerializeField] private Transform wingTransform;
     [SerializeField] private GameObject collectable;
     [SerializeField] private Transform spawnPointTransform;
-
+    
     [Header("Values")]
-    [SerializeField] private Type type;
-    [SerializeField] private float rotateSpeed;
-    [SerializeField] private float verticalSpeed;
+    [SerializeField] private MovementType movementType;
+    [SerializeField] private int spawnCount;
 
     private CollectableSpawnerAnimation collectableSpawnerAnimation;
     private bool isActive;
     private float spawnTimer;
+    private int objectPoolID;
 
     private void Awake()
     {
         collectableSpawnerAnimation = GetComponent<CollectableSpawnerAnimation>();
+    }
+
+    private void Start()
+    {
+        objectPoolID = ObjectPoolManager.Instance.CreatePool(collectable, spawnCount);
     }
 
     private void Update()
@@ -39,6 +45,7 @@ public class CollectableSpawner : MonoBehaviour
 
     private void RotateWings()
     {
+        float rotateSpeed = 720f;
         wingTransform.eulerAngles += new Vector3(0, rotateSpeed * Time.deltaTime, 0);
     }
 
@@ -48,7 +55,8 @@ public class CollectableSpawner : MonoBehaviour
         {
             return;
         }
-        
+
+        float verticalSpeed = 4f;
         transform.Translate(Vector3.forward * (verticalSpeed * Time.deltaTime));
     }
 
@@ -64,7 +72,8 @@ public class CollectableSpawner : MonoBehaviour
         if (spawnTimer >= 0.06f)
         {
             spawnTimer = 0;
-            Instantiate(collectable, spawnPointTransform.position, Quaternion.Euler(270, 0, 0));
+            ObjectPoolManager.Instance.SpawnFromPool(objectPoolID, spawnPointTransform.position,
+                collectable.transform.eulerAngles);
         }
     }
 
@@ -73,7 +82,7 @@ public class CollectableSpawner : MonoBehaviour
         isActive = true;
         StartCoroutine(WaitToDisableSpawning());
 
-        if (type == Type.ZigZagMovement)
+        if (movementType == MovementType.ZigZagMovement)
         {
             collectableSpawnerAnimation.PlayZigZagMovementAnimation();
         }

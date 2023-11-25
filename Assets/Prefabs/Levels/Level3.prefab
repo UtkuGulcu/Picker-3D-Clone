@@ -1306,6 +1306,10 @@ PrefabInstance:
       propertyPath: collectable
       value: 
       objectReference: {fileID: 2303815652960871933, guid: 30d83b698f13e7649a2428f9fcf49363, type: 3}
+    - target: {fileID: 8843582811275866580, guid: 91fd5ff3cdd777448b2f58faf7e1bc87, type: 3}
+      propertyPath: pooledObjectPrefab
+      value: 
+      objectReference: {fileID: 2303815652960871933, guid: 30d83b698f13e7649a2428f9fcf49363, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91fd5ff3cdd777448b2f58faf7e1bc87, type: 3}
 --- !u!4 &7407784391756904519 stripped

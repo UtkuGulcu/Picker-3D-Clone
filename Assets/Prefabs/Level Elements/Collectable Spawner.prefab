@@ -102,8 +102,8 @@ MonoBehaviour:
   wingTransform: {fileID: 2537708433381120768}
   collectable: {fileID: 5521239853707568767, guid: a3e578cb09674004c95dffef0517f301, type: 3}
   spawnPointTransform: {fileID: 6756910386912231998}
-  rotateSpeed: 720
-  verticalSpeed: 4
+  movementType: 0
+  spawnCount: 50
 --- !u!114 &6251229825503545273
 MonoBehaviour:
   m_ObjectHideFlags: 0
