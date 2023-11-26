@@ -6,7 +6,7 @@ using UnityEngine;
 public class FillAreaSuccessUIAnimation : MonoBehaviour
 {
     private Animator animator;
-    private static int spawnTrigger = Animator.StringToHash("spawn");
+    private static readonly int spawnTrigger = Animator.StringToHash("spawn");
 
     private void Awake()
     {

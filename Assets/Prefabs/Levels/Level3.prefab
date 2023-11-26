@@ -2276,6 +2276,10 @@ PrefabInstance:
       propertyPath: OnReachedRewardArea
       value: 
       objectReference: {fileID: 11400000, guid: 9fc135ede9958234386048f5d35d351c, type: 2}
+    - target: {fileID: 4973407778355976524, guid: dddfcbccbda60e94b87c6681790784cb, type: 3}
+      propertyPath: OnReachedRewardBlock
+      value: 
+      objectReference: {fileID: 11400000, guid: 9fc135ede9958234386048f5d35d351c, type: 2}
     - target: {fileID: 6738067774028050562, guid: dddfcbccbda60e94b87c6681790784cb, type: 3}
       propertyPath: m_RootOrder
       value: 5

@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Events")]
     [SerializeField] private GameEventSO OnLevelFinished;
     [SerializeField] private GameEventSO OnLevelTransitionStarted;
-    
+
     [Header("Values")] 
     [SerializeField] private PickerDataSO pickerDataSO;
 
@@ -71,16 +72,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void EnableRewardAreaSpeed()
     {
-        verticalSpeed = pickerDataSO.rewardAreaSpeed;
+        float rewardAreaSpeed = Random.Range(pickerDataSO.rewardAreaMinSpeed, pickerDataSO.rewardAreaMaxSpeed);
+        verticalSpeed = rewardAreaSpeed;
+
+        StartCoroutine(StartSlowingDown(verticalSpeed, 0));
     }
 
-    public void StartSlowingDown()
+    private IEnumerator StartSlowingDown(float startSpeed, float endSpeed)
     {
-        StartCoroutine(SlowDown(verticalSpeed, 0));
-    }
+        yield return Helpers.GetWait(2);
 
-    private IEnumerator SlowDown(float startSpeed, float endSpeed)
-    {
         float lerpTime = 0f;
         float duration = 1f;
         
@@ -90,6 +91,10 @@ public class PlayerMovement : MonoBehaviour
             verticalSpeed = Mathf.Lerp(startSpeed, endSpeed, lerpTime / duration);
             yield return Helpers.GetWaitForEndOfFrame();
         }
+        
+        RewardAreaControl.Instance.OnPickerStopped();
+
+        yield return Helpers.GetWait(1);
 
         StartCoroutine(GoToNextLevelStartPosition());
     }
@@ -99,17 +104,30 @@ public class PlayerMovement : MonoBehaviour
         OnLevelTransitionStarted.Raise();
         playerInput.enabled = false;
         
+        // Go to next level starting position with constant speed until getting close
         Vector3 target = LevelManager.Instance.GetLevelStartingLocation();
         Vector3 direction = (target - transform.position).normalized;
-        float speed = 8;
-
-        float distance = Vector3.Distance(transform.position, target);
-
+        float speed = 25f;
         
-        while (distance >= 0.1f)
+        float distance = Vector3.Distance(transform.position, target);
+        
+        while (distance >= 8f)
         {
             distance = Vector3.Distance(transform.position, target);
             transform.Translate(direction * (speed * Time.deltaTime));
+            yield return Helpers.GetWaitForEndOfFrame();
+        }
+        
+        // Slow down smoothly
+        float lerpTime = 0f;
+        float duration = 0.8f;
+        Vector3 startPosition = transform.position;
+        Vector3 endPosition = target;
+        
+        while (lerpTime <= duration)
+        {
+            lerpTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPosition, endPosition, pickerDataSO.rewardAreaSpeedCurve.Evaluate(lerpTime / duration));
             yield return Helpers.GetWaitForEndOfFrame();
         }
 

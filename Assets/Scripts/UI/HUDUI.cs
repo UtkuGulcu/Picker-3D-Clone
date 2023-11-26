@@ -11,6 +11,7 @@ public class HUDUI : MonoBehaviour
     [SerializeField] private TMP_Text currentLevelIndicatorText;
     [SerializeField] private TMP_Text nextLevelIndicatorText;
     [SerializeField] private CheckpointIndicator[] checkpointIndicatorArray;
+    [SerializeField] private TMP_Text diamondCountText;
 
     private int checkpointCount;
 
@@ -32,6 +33,7 @@ public class HUDUI : MonoBehaviour
         RefreshCheckpointIndicators();
         currentLevelIndicatorText.text = LevelManager.Instance.GetCurrentLevelCount().ToString();
         nextLevelIndicatorText.text = LevelManager.Instance.GetNextLevelCount().ToString();
+        diamondCountText.text = ResourceManager.Instance.GetDiamondAmount().ToString();
     }
 
     public void OnCheckpointPassed()
@@ -48,5 +50,11 @@ public class HUDUI : MonoBehaviour
         {
             checkpointIndicator.RefreshVisual();
         }
+    }
+
+    public void UpdateDiamondCountText(object sender, object data)
+    {
+        int newAmount = (int)data;
+        diamondCountText.text = newAmount.ToString();
     }
 }

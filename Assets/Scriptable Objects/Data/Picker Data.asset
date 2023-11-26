@@ -12,6 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7838a125423ea40b622276b3916972, type: 3}
   m_Name: Picker Data
   m_EditorClassIdentifier: 
-  horizontalSpeed: 0.25
+  horizontalSpeed: 0.35
   verticalSpeed: 4
-  rewardAreaSpeed: 10
+  rewardAreaMinSpeed: 10
+  rewardAreaMaxSpeed: 20
+  defaultSize: {x: 1.25, y: 2.0672634, z: 1.25}
+  firstBigSize: {x: 1.317625, y: 2.179102, z: 1.317625}
+  secondBigSize: {x: 1.4, y: 2.315335, z: 1.4}
+  rewardAreaSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

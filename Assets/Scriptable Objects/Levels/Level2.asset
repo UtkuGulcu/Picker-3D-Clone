@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 1920928052146991368, guid: 94a3463c12c33624f89c8d9790c94bcc, type: 3}
   nextLevel: {fileID: 11400000, guid: 8da65642e53dde445800e6da9ed5f07e, type: 2}
   levelCount: 2
-  spawnPosition: {x: 0, y: 0, z: 112.595}
+  spawnPosition: {x: 0, y: 0, z: 146.731}
   color: {r: 0.1764706, g: 0.08627451, b: 0.52156866, a: 0}
   firstFillAreaRequirement: 10
   secondFillAreaRequirement: 20

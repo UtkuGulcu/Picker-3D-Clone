@@ -13,8 +13,8 @@ public class SaveManager : MonoBehaviour
     
     private class SaveObject
     {
-        //public LevelSO levelSO;
         public int levelCount;
+        public int diamondAmount;
     }
     
     public static SaveManager Instance { get; private set; }
@@ -50,13 +50,15 @@ public class SaveManager : MonoBehaviour
         Save();
     }
 
-    private void Save()
+    public void Save()
     {
         int currentLevelCount = LevelManager.Instance.GetCurrentLevelCount();
+        int diamondAmount = ResourceManager.Instance.GetDiamondAmount();
 
         SaveObject saveObject = new SaveObject
         {
-            levelCount = currentLevelCount
+            levelCount = currentLevelCount,
+            diamondAmount = diamondAmount
         };
 
         string jsonString = JsonUtility.ToJson(saveObject);
@@ -81,10 +83,6 @@ public class SaveManager : MonoBehaviour
         SaveObject loadedObject = JsonUtility.FromJson<SaveObject>(jsonString);
         
         LevelManager.Instance.SetCurrentLevel(loadedObject.levelCount);
-    }
-
-    public void DeleteSaves()
-    {
-        
+        ResourceManager.Instance.SetDiamondAmount(loadedObject.diamondAmount);
     }
 }

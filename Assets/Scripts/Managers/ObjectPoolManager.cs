@@ -80,6 +80,11 @@ public class ObjectPoolManager : MonoBehaviour
 
     public void DestroyPool()
     {
+        if (currentID == 0)
+        {
+            return;
+        }
+        
         Destroy(poolHolderList[currentID - 1]);
     }
 }

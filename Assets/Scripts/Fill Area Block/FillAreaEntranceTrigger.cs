@@ -16,7 +16,8 @@ public class FillAreaEntranceTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             OnReachedFillArea.Raise();
-            StartCoroutine(fillArea.CheckWinState());
+            fillArea.CheckWinState();
+            Destroy(this);
         }
     }
 }

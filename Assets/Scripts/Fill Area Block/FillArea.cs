@@ -43,7 +43,12 @@ public class FillArea : MonoBehaviour
         }
     }
 
-    public IEnumerator CheckWinState()
+    public void CheckWinState()
+    {
+        StartCoroutine(WaitToCheckWinState());
+    }
+
+    private IEnumerator WaitToCheckWinState()
     {
         float waitTime = 1.5f;
         yield return Helpers.GetWait(waitTime);

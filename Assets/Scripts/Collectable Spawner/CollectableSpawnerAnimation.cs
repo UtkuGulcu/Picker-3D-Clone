@@ -6,8 +6,8 @@ using UnityEngine;
 public class CollectableSpawnerAnimation : MonoBehaviour
 {
     private Animator animator;
-    private static int zigZagMovementTrigger = Animator.StringToHash("zigZagMovement");
-    private static int curvedMovementTrigger = Animator.StringToHash("curvedMovement");
+    private static readonly int zigZagMovementTrigger = Animator.StringToHash("zigZagMovement");
+    private static readonly int curvedMovementTrigger = Animator.StringToHash("curvedMovement");
 
     private void Awake()
     {

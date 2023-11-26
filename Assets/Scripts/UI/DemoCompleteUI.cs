@@ -25,6 +25,7 @@ public class DemoCompleteUI : MonoBehaviour
 
     private void OnQuitButtonClicked()
     {
+        SaveManager.Instance.Save();
         Application.Quit();
     }
 

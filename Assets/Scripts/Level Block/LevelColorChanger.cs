@@ -22,25 +22,4 @@ public class LevelColorChanger : MonoBehaviour
             meshRenderer.material.color = levelColor;
         }
     }
-
-
-
-
-
-    // [SerializeField] private MeshRenderer meshRenderer;
-    // [SerializeField] private bool isLastBlock;
-    //
-    // public void SetColor(object sender, object data)
-    // {
-    //     LevelSO levelSO = data as LevelSO;
-    //
-    //     if (levelSO.nextLevel == null)
-    //     {
-    //         meshRenderer.material.color = levelSO.color;
-    //         return;
-    //     }
-    //     
-    //     meshRenderer.material.color = isLastBlock ? levelSO.nextLevel.color : levelSO.color;
-    // }
-
 }
