@@ -63,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fillAreaUI: {fileID: 1382565130949996}
   fillAreaAnimation: {fileID: 811740957254897104}
+  levelGroundCollider: {fileID: 4289515567839441247}
   OnLevelFailed: {fileID: 11400000, guid: 021fd4dde167b80468b28b85ed5a9b5c, type: 2}
   type: 0
 --- !u!114 &3141712479260347376
